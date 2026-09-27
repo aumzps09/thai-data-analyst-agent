@@ -1,0 +1,16 @@
+fastapi>=0.115
+uvicorn>=0.30
+sse-starlette>=2.1
+langgraph>=0.2
+langchain-core>=0.3
+pyyaml>=6.0
+psycopg[binary]>=3.1
+matplotlib>=3.8
+pydantic>=2.0
+httpx>=0.27
+pytest>=8.0
+# optional (enable as needed):
+# langchain-google-genai  # Gemini
+# langchain-openai        # OpenAI fallback
+# tavily-python           # web search
+# chromadb                # doc retriever (Project 1)

@@ -1,0 +1,5 @@
+{"question": "ยอดขายหมวดเครื่องใช้ไฟฟ้าเดือนที่แล้วเท่าไหร่", "sql": "SELECT SUM(oi.qty * p.price) AS ยอดขาย FROM order_items oi JOIN products p ON p.id = oi.product_id JOIN orders o ON o.id = oi.order_id WHERE p.category_th = 'เครื่องใช้ไฟฟ้า' AND o.order_date >= date_trunc('month', CURRENT_DATE - INTERVAL '1 month') AND o.order_date < date_trunc('month', CURRENT_DATE)", "route": "sql"}
+{"question": "Top 5 หมวดขายดีสุดคืออะไร", "sql": "SELECT p.category_th AS หมวด, SUM(oi.qty * p.price) AS ยอดขาย FROM order_items oi JOIN products p ON p.id = oi.product_id GROUP BY 1 ORDER BY 2 DESC LIMIT 5", "route": "sql"}
+{"question": "จังหวัดไหนมีลูกค้าเยอะสุด", "sql": "SELECT c.city AS จังหวัด, COUNT(*) AS ลูกค้า FROM customers c GROUP BY 1 ORDER BY 2 DESC LIMIT 5", "route": "sql"}
+{"question": "นโยบายคืนสินค้าคืออะไร", "sql": "SELECT title, detail FROM policies WHERE title LIKE '%คืนสินค้า%'", "route": "doc"}
+{"question": "เทียบยอดขายหมวดแฟชั่นกับนโยบายส่วนลดสมาชิก", "sql": "SELECT p.category_th, SUM(oi.qty*p.price) FROM order_items oi JOIN products p ON p.id=oi.product_id WHERE p.category_th='แฟชั่น' GROUP BY 1", "route": "mixed"}
